@@ -13,8 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Docker
+        uses: docker/setup-docker@v1
+
       - name: Build and tag Docker image
-        run: docker build -t myapp:latest .
+        run: |
+          docker build -t myapp:latest .
+          docker --version
 
   deploy:
     needs: build
@@ -23,6 +28,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-docker@v1
 
       - name: Start Docker Compose services
         run: docker-compose up -d
