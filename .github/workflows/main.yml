@@ -16,7 +16,7 @@ jobs:
       - name: Build and tag Docker image
         run: docker build -t flask:latest .
   deploy:
-    runs-on: deployment
+    runs-on: build
     needs: build
     steps:
       - name: Checkout repository
