@@ -18,6 +18,9 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install docker.io
 
+      - name: Start Docker service
+        run: sudo service docker start
+
       - name: Build and tag Docker image
         run: |
           docker build -t myapp:latest .
@@ -35,6 +38,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -y install docker.io
+
+      - name: Start Docker service
+        run: sudo service docker start
 
       - name: Start Docker Compose services
         run: docker-compose up -d
