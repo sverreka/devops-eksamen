@@ -13,8 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install docker.io
+
+      - name: Start Docker service
+        run: sudo service docker start
+
       - name: Build and tag Docker image
-        run: docker build -t myapp:latest .
+        run: |
+          docker build -t myapp:latest .
+          docker --version
 
   deploy:
     needs: build
@@ -23,6 +33,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install docker.io
+
+      - name: Start Docker service
+        run: sudo service docker start
 
       - name: Start Docker Compose services
         run: docker-compose up -d
