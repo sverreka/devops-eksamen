@@ -141,9 +141,6 @@ def FUN_delete_image(image_uid):
 
 
 
-
-
-
 @app.route("/login", methods = ["POST"])
 def FUN_login():
     id_submitted = request.form.get("id").upper()
