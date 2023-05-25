@@ -1,19 +1,21 @@
 version: '3'
 services:
   flask:
-    image: docker.io/sverrek/flask:latest
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     ports:
       - "5000:5000"
     depends_on:
       - postgres
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_PASSWORD=password
     
   postgres: 
     image: 'postgres:latest' 
     restart: always 
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_PASSWORD=password
     ports:
       - "5432:5432"
     volumes:
