@@ -11,6 +11,7 @@ RUN apk update && \
 WORKDIR /app
 
 RUN git clone https://github.com/sverreka/devops-eksamen.git
+RUN pip3 install psycopg2-binary
 
 WORKDIR /app/devops-eksamen
 
