@@ -4,3 +4,20 @@ services:
     image: docker.io/sverrek/flask:latest
     ports:
       - "5000:5000"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    
+  postgres: 
+    image: 'postgres:latest' 
+    restart: always 
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
