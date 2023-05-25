@@ -8,8 +8,7 @@ RUN apk update && \
         python3-dev \
         py3-pip \
         gcc \
-        postgresql-dev \
-        psycopg2
+        postgresql-dev 
 
 WORKDIR /app
 
